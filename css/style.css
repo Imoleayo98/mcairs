@@ -44,8 +44,7 @@ fieldset {
 
 textarea {
   resize: vertical;
-  padding: 5px;
-  margin-top: 32px;
+  margin-top: 38px;
 }
 
 body {
@@ -161,6 +160,10 @@ button {
   -ms-transition: 0.2s ease;
   -o-transition: 0.2s ease;
   transition: 0.2s ease;
+}
+.logo{
+  color: #fff;
+  padding-left: 24px;
 }
 
 input:focus,
@@ -871,7 +874,7 @@ textarea:focus {
   right: 0;
   top: 0;
   width: 23px;
-  margin-top: 23px;
+  margin-top: 10px;
   margin-right: 30px;
 }
 
@@ -907,7 +910,7 @@ textarea:focus {
 }
 
 .mean-container .mean-bar nav.mean-nav ul li a {
-  color: #969696;
+  color: #ffffff;
   display: block;
   padding: 6px 0;
   border-bottom: 1px solid #222222;
