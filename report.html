@@ -12,6 +12,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="">
@@ -128,13 +130,16 @@
                                     <div class="col-md-6">
                                         <br>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="name" placeholder="Name *" value="">
+                                            <label for="Name">Name</label>
+                                            <input type="text" class="form-control" name="name" placeholder="Name" value="">
                                                                                         </div>
 
                                         <div class="form-group">
+                                            <label for="Date & Time">Date & Time</label>
                                             <input type="datetime-local" class="form-control" name="datetime-local" placeholder="Date and Time *" value="">
                                                                                         </div>
                                         <div class="form-group">
+                                            <label for="State">State</label>
                                             <select class="form-control" type="optgroup" name="location" required="">
                                                 <option value="" disabled="" selected="">Select a State</option>
                                                 <option value="Abia">Abia</option>
@@ -178,13 +183,19 @@
                                                                                         </div>                           
                                     </div>
                                     <div class="col-md-6">
+                                        <label for="CyberIncident Description">Cyberattack Description</label>
                                         <div class="form-group">
-                                            <textarea id="" cols="30" rows="7" name="impact" class="form-control" placeholder="Enter Full Details"></textarea>
-                                                                                        </div>
-                                        
-
-                                                                                        <input type="submit" class="btnSubmit" value="Submit">
+                                        <textarea id="description" name="impact" cols="30" rows="7" placeholder="Enter the Incident in detail..." required></textarea><br>
+                                        <button type="button" id="start-button" onclick="toggleSpeechRecognition()">
+                                            <i class="material-icons">mic</i>
+                                        </button>
+                                        <button type="button" id="stop-button" onclick="toggleSpeechRecognition()" style="display: none;">
+                                            <i class="material-icons">stop</i>
+                                        </button>
                                     </div>
+                                    <button type="submit" class="btnSubmit" value="Submit"">Submit</button>
+
+                                
                                 </div>
                             </form>
                         </div>
@@ -268,6 +279,30 @@ JavaScript Files
         });
     });
 </script>
+<script>
+    let recognition;
+    let isRecording = false;
 
+    function toggleSpeechRecognition() {
+        const inputField = document.getElementById('description');
+        
+        if (!isRecording) {
+            recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+            recognition.onresult = (event) => {
+                const result = event.results[0][0].transcript;
+                inputField.value += result; // Append recognized text
+            };
+            recognition.start();
+            isRecording = true;
+            document.getElementById('start-button').style.display = 'none';
+            document.getElementById('stop-button').style.display = 'block';
+        } else {
+            recognition.stop();
+            isRecording = false;
+            document.getElementById('stop-button').style.display = 'none';
+            document.getElementById('start-button').style.display = 'block';
+        }
+    }
+</script>
 
 </body></html>
