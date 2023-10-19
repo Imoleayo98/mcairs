@@ -101,12 +101,18 @@
 @media (max-width: 768px) {
     .incident-left p{
         font-weight: lighter;
-        padding-left: 20%;
+        /* padding-left: 20%; */
         margin-top: -9%;
     }
     .incident .incident-form{
       padding: 2%;
       margin: 3%;
+    }
+    .incident-heading{
+        text-align: center;
+        margin-top: 8%;
+        margin-bottom: -10%;
+        color: #495057;
     }
     .footer-btm{
         height: 85px;
