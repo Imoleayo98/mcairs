@@ -44,6 +44,8 @@ fieldset {
 
 textarea {
   resize: vertical;
+  padding: 5px;
+  margin-top: 32px;
 }
 
 body {
