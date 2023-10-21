@@ -111,6 +111,31 @@
 <!-- End Web Ticker -->
 
     <!-- Slider Area 3 -->
+<!-- <div id="result" class="container card bg-white rounded rounded-">
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolores accusantium architecto quas a fugit quod ad amet magni inventore esse, aliquam nostrum explicabo natus ut, rerum ducimus reprehenderit doloremque?
+    </p>
+</div> -->
+<!-- Centered Modal -->
+<!-- Centered Modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#centeredModal">
+    Open Centered Modal
+  </button> -->
+<div class="modal" id="centeredModal" tabindex="-1" role="dialog" aria-labelledby="centeredModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title" id="centeredModalLabel">Incidence Rating</h6>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="result">This is a centered modal.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <section class="slider-area3">
     <div class="form">
@@ -336,6 +361,8 @@ JavaScript Files
             .then(data => {
                 // Handle the API response data as needed
                 console.log(data);
+                $('#result').html('The danger is: '+data[0].severity + '.' + ' ' + 'Thank you for reporting');
+                $('#centeredModal').modal('show');
             })
             .catch(error => {
                 console.error('Error:', error);
