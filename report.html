@@ -111,6 +111,7 @@
 <!-- End Web Ticker -->
 
     <!-- Slider Area 3 -->
+
 <section class="slider-area3">
     <div class="form">
         <div class="card incident col-sm-12">
@@ -191,7 +192,7 @@
                                             <i class="material-icons">stop</i>
                                         </button>
                                     </div>
-                                    <button type="submit" class="btnSubmit" value="Submit"">Submit</button>
+                                    <button type="submit" id="btnSubmit" class="btnSubmit" value="Submit">Submit</button>
                                 </div>
                             </form>
                         </div>
@@ -300,5 +301,45 @@ JavaScript Files
         }
     }
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Find the form by its ID
+        const form = document.getElementById('individual');
+        const submitButton = document.getElementById('btnSubmit');
+        const valueBox = document.getElementById('description');
 
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const formData = valueBox.value;
+
+            console.log(formData);
+
+            fetch('https://mcairs.onrender.com/get-severity', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                },
+                body: {
+                    "data": [
+                        formData
+                    ]
+                }, // Send the form data as the request body
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Handle the API response data as needed
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+</script>
 </body></html>
