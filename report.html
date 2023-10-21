@@ -317,6 +317,9 @@ JavaScript Files
 
             fetch('https://mcairs.onrender.com/get-severity', {
                 method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                },
                 body: {
                     "data": [
                         formData
