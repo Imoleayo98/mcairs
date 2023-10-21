@@ -321,11 +321,11 @@ JavaScript Files
                     'Accept': 'application/json',
                     'Content-Type': 'application/json', // Set the content type to JSON
                 },
-                body: {
+                body: JSON.stringify({
                     "data": [
                         formData
                     ]
-                }, // Send the form data as the request body
+                }), // Send the form data as JSON in the request body
             })
             .then(response => {
                 if (!response.ok) {
@@ -343,4 +343,5 @@ JavaScript Files
         });
     });
 </script>
+
 </body></html>
